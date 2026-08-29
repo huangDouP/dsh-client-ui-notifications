@@ -3,6 +3,7 @@
   "description": "DSH Web 等待/完成通知插件：浏览器系统通知、Tab 标题闪烁、favicon 红点、原生 Windows toast 与设置页（zh/en）",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.24.0",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
