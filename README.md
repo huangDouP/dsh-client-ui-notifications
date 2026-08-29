@@ -1,6 +1,18 @@
 # @dsh-external/dsh-client-ui-notifications
 
-DSH Web 的「等待 / 完成」通知插件：当你切去做别的事情时，DSH 需要你回来处理（等待批准 / 提问、回合完成、出错）会通过 **浏览器系统通知、Tab 标题闪烁、favicon 红点** 提醒你，并可在 **设置 → 通知** 里逐项开关与配置。
+**中文** | [English](README.en.md)
+
+DSH Web 的「等待 / 完成」通知插件：当你切去做别的事情时，DSH 需要你回来处理（等待批准 / 提问、回合完成、出错）会通过 **浏览器系统通知、Tab 标题闪烁、favicon 红点、原生 Windows toast** 提醒你，并可在 **设置 → 通知** 里逐项开关与配置。
+
+## 截图
+
+浏览器通知（Windows 通知中心，来源为浏览器）：
+
+![浏览器通知](assets/screenshots/browser-notification.png)
+
+原生 Windows toast（由 DSH Host 进程弹出——浏览器整个关掉也能收到）：
+
+![原生 Windows toast](assets/screenshots/win-11-notification.png)
 
 ## 提醒机制（与生效条件）
 
