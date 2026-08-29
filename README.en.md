@@ -80,6 +80,22 @@ Then `pnpm install`, and **restart dsh** (a new plugin set only takes effect aft
 
 **Local development install**: `"@dsh-external/dsh-client-ui-notifications": "file:<absolute-path>"`, or copy the package into `node_modules/@dsh-external/`.
 
+After the restart, open **Settings → Notifications** to see every switch and configure them (enable notifications / approval waiting / turn complete / errors / browser notifications / native system notifications / tab title flash / favicon badge / sound / cooldown).
+
+## Uninstall
+
+1. Edit `~/.dsh/profiles/<your-profile>/package.json`:
+   - remove the `"@dsh-external/dsh-client-ui-notifications": ...` line from `dependencies`;
+   - remove the `"@dsh-external/dsh-client-ui-notifications"` entry from `dsh.profile.bundles`.
+2. Run `pnpm install` inside `~/.dsh/profiles/<your-profile>` (prunes the package from node_modules).
+3. **Restart dsh** — plugin-set changes only take effect after a restart; the bundle's own `cordis.patch.yml` insert row disappears automatically once the bundle is gone, so no manual edits to the profile patch file are needed.
+
+Optional cleanup:
+
+- **Settings residue**: edit `~/.dsh/settings.yaml` and remove the `notifications:` section (restores defaults).
+- **Browser notification permission**: browser settings → site settings → notifications, revoke the permission for `127.0.0.1:3080`.
+- Tab title / favicon are runtime changes made by the plugin and restore automatically after a restart — nothing to do.
+
 ## Sharing on GitHub (repo configuration)
 
 - Suggested repo name: `dsh-client-ui-notifications` (matches the official `dsh-client-ui-*` naming).

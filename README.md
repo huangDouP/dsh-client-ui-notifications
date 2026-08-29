@@ -80,6 +80,22 @@ pnpm typecheck      # tsc --noEmit（可选）
 
 **本地开发安装**：`"@dsh-external/dsh-client-ui-notifications": "file:<本包绝对路径>"`，或复制进 `node_modules/@dsh-external/`。
 
+重启后打开 **设置 → 通知** 即可看到全部开关并逐项配置（启用通知 / 等待批准 / 回合完成 / 出错 / 浏览器系统通知 / 原生系统通知 / Tab 标题闪烁 / favicon 红点 / 声音 / 冷却）。
+
+## 卸载
+
+1. 编辑 `~/.dsh/profiles/<你的profile>/package.json`：
+   - 从 `dependencies` 删除 `"@dsh-external/dsh-client-ui-notifications": ...` 那一行；
+   - 从 `dsh.profile.bundles` 数组中删除 `"@dsh-external/dsh-client-ui-notifications"` 那一行。
+2. 在 `~/.dsh/profiles/<你的profile>` 下执行 `pnpm install`（把包从 node_modules 中清掉）。
+3. **重启 dsh** —— 插件集合的增删只在重启后生效；bundle 自带的 `cordis.patch.yml` 插入行会随 bundle 移除自动消失，无需手工改 profile 的 patch 文件。
+
+可选清理：
+
+- **设置残留**：编辑 `~/.dsh/settings.yaml`，删除 `notifications:` 段（恢复出厂默认）；
+- **浏览器通知授权**：浏览器设置 → 网站设置 → 通知，移除对 `127.0.0.1:3080` 的授权；
+- Tab 标题 / favicon 属于插件运行期改动，重启后自动恢复，无需处理。
+
 ## 共享到 GitHub（仓库配置）
 
 - 仓库名建议：`dsh-client-ui-notifications`（与官方 `dsh-client-ui-*` 命名一致）
