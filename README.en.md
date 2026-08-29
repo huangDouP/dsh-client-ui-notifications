@@ -96,14 +96,6 @@ Optional cleanup:
 - **Browser notification permission**: browser settings → site settings → notifications, revoke the permission for `127.0.0.1:3080`.
 - Tab title / favicon are runtime changes made by the plugin and restore automatically after a restart — nothing to do.
 
-## Sharing on GitHub (repo configuration)
-
-- Suggested repo name: `dsh-client-ui-notifications` (matches the official `dsh-client-ui-*` naming).
-- **Topics (required)**: `dsh-plugin` (community plugin marketplaces discover plugins through this topic — 1800+ repos), `deepseek-harness`, `dsh`, `client-plugin`, `notifications`.
-- Suggested description: `DSH Web notifications: browser notifications, tab title flash, favicon badge, and native Windows toasts with a bilingual (zh/en) settings page.`
-- License: MIT (this package is already MIT; put a `LICENSE` file at the repo root).
-- Versioning: `git tag v0.1.0` + a GitHub Release (markets/installs prefer tagging).
-
 ## Known limitations
 
 - Browser notifications require the page to be open (a background tab is fine, but the whole tab must not be closed); **native system notifications** (the `nativeToast` switch) are raised by the host and work even with the browser fully closed (zero-dependency WinRT; installing BurntToast yields nicer styling).

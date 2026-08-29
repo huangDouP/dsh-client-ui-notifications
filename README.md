@@ -96,14 +96,6 @@ pnpm typecheck      # tsc --noEmit（可选）
 - **浏览器通知授权**：浏览器设置 → 网站设置 → 通知，移除对 `127.0.0.1:3080` 的授权；
 - Tab 标题 / favicon 属于插件运行期改动，重启后自动恢复，无需处理。
 
-## 共享到 GitHub（仓库配置）
-
-- 仓库名建议：`dsh-client-ui-notifications`（与官方 `dsh-client-ui-*` 命名一致）
-- **Topics（必加）**：`dsh-plugin`（社区插件市场靠这个话题发现插件，1800+ 仓库）、`deepseek-harness`、`dsh`、`client-plugin`、`notifications`
-- Description 建议：`DSH Web notifications: browser notifications, tab title flash, favicon badge, and native Windows toasts with a bilingual (zh/en) settings page.`
-- License：MIT（本包已是 MIT，仓库根放 `LICENSE`）
-- 版本：`git tag v0.1.0` + GitHub Release（市场/安装都按 tag 引用更稳）
-
 ## 已知限制
 
 - 浏览器通知依赖页面处于打开状态（标签页可以后台，但不能关闭整个标签页）；**原生系统通知**（`nativeToast` 开关）则由 Host 直接弹 Windows toast，浏览器整个关掉也能收到（零依赖 WinRT；装 BurntToast 模块可获得更美观样式）。
