@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install
+        run: pnpm install
+      - name: Build
+        run: pnpm build
+      - name: Validate artifacts
+        run: |
+          node --check lib/index.js
+          node --check lib/client.js
+          grep -q "window.__ModuleLoader__.load" lib/client.js
+          node -e "const p=require('./package.json'); if(p.dsh?.client?.platform!=='web') process.exit(1); console.log('package.json dsh.client ok')"
+      - name: Ensure lib/ is committed
+        run: |
+          if ! git diff --quiet -- lib; then
+            echo "::error::lib/ is out of date — run \`pnpm build\` locally and commit the regenerated lib/ (or push the build output)."
+            git diff --stat -- lib
+            exit 1
+          fi

@@ -1,0 +1,4 @@
+# DSH Web 通知插件：把本包的 client 模块注册进 web profile 的组合。
+- insert:
+    - id: client-ui-notifications
+      name: '@dsh-external/dsh-client-ui-notifications'
